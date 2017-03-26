@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message Serv
+{
+	int32 msgID = 1;
+}
+
+

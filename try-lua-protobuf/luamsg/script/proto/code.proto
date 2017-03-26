@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+message Ping
+{
+	int32 msgID = 1;
+	int32 userid = 2;
+	string username = 3;
+}
+
+message Pong
+{
+	int32 msgID = 1;
+	int32 userid = 2;
+	string username = 3;
+}
+
+message Code
+{
+	int32 msgID = 1;
+	string name = 2;
+	Ping ping = 3;
+
+	repeated int32 xx = 4;
+}
