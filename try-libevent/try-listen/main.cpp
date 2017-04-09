@@ -91,7 +91,8 @@ void accept_conn_cb(struct evconnlistener *listener, evutil_socket_t fd, struct 
 
 void accept_error_cb(struct evconnlistener *listener, void *ctx)
 {
-
+	int a = 0;
+	a++;
 }
 
 void signal_int_cb(evutil_socket_t fd, short sig_num, void *arg)
