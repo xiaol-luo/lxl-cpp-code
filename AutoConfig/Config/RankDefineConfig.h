@@ -10,8 +10,8 @@ namespace Config
         int m_int_val;
         float m_float_val;
     public:
-        int int_val() { return m_int_val; }
-        float float_val() { return m_float_val; }
+        int int_val() const  { return m_int_val; }
+        float float_val() const { return m_float_val; }
     };
 }
 

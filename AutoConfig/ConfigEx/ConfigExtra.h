@@ -9,7 +9,7 @@ namespace ConfigEx
 
     public:
         template <typename T>
-        bool Init(T cfg_elem)
+        bool Init(const T & cfg_elem)
         {
             int_val = cfg_elem.int_val();
             float_val = cfg_elem.float_val();
