@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Config/ConfigUtil.h"
 
 class RankDefineConfig
 {

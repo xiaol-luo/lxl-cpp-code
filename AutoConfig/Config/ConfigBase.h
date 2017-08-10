@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <map>
-// #include "Config/ConfigUtil.h"
+#include "Config/ConfigUtil.h"
 #include "ConfigEx/ConfigExtra.h"
 
 namespace Config

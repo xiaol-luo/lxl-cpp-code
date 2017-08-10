@@ -6,6 +6,7 @@ SET(SourceFiles
 	Config/ConfigBase.cpp
 	Config/RankDefineConfig.cpp
 	ConfigEx/ConfigExtra.cpp
+	Config/ConfigUtil.cpp
 )
 ADD_EXECUTABLE(main ${SourceFiles})
 ADD_COMPILE_OPTIONS(-std=c++11)
