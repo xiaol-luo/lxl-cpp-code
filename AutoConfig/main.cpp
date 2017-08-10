@@ -3,21 +3,17 @@
 #include "Config/ConfigBase.h"
 #include "Config/RankDefineConfig.h"
 #include "ConfigEx/ConfigExtra.h"
-#include "Config/ConfigUtil.h"
+// #include "Config/ConfigUtil.h"
 
 int main(int argc, char **argv)
 {
     Config::ConfigBase cfg_base = Config::ConfigBase();
-    int a = cfg_base.GetField<int>("xxx");
-
-    RankDefineConfig rank_cfg = RankDefineConfig();
-    rank_cfg.GetField<float>("222");
-    rank_cfg.GetField<int>("222");
-
-    ConfigEx::ConfigExtra cfg_extra = ConfigEx::ConfigExtra();
-    cfg_extra.Init(cfg_base);
+    Config::RankDefineConfig rank_cfg = Config::RankDefineConfig();
+    ConfigEx::ConfigExtra().Init(cfg_base);
+    ConfigEx::ConfigExtra().Init(rank_cfg);
 
     bool ret;
+    int a;
     ret = Config::Str2BaseValue("1024", a);
     long long ll;
     ret = Config::Str2BaseValue("1024", ll);

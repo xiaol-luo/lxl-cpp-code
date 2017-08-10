@@ -9,38 +9,17 @@ namespace Config
 {
     class ConfigBase
     {
-    public:
-        template <typename T>
-        const T GetField(std::string field_name)
-        {
-            static_assert(false, "need specialization this funtion");
-            return T();
-        }
-
-        template <>
-        const int GetField<int>(std::string field_name)
-        {
-            return 2;
-        }
-
-        template <>
-        const float GetField<float>(std::string field_name)
-        {
-            return 2;
-        }
-
     private:
         int m_int_val;
         float m_float_val;
         std::vector<int> m_int_vec;
         std::map<int, int> m_int_int_map;
         ConfigEx::ConfigExtra m_extra_data;
-
     public:
-        int int_valx() { return m_int_val; }
-        float float_valx() { return m_float_val; }
-        const std::vector<int> & int_vecx() { return m_int_vec; }
-        const std::map<int, int> & int_int_mapx() { return m_int_int_map; }
+        int int_val() { return m_int_val; }
+        float float_val() { return m_float_val; }
+        const std::vector<int> & int_vec() { return m_int_vec; }
+        const std::map<int, int> & int_int_map() { return m_int_int_map; }
         const ConfigEx::ConfigExtra & extra_data() { return m_extra_data; }
 
     public:

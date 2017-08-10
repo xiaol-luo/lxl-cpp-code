@@ -2,25 +2,16 @@
 #include <string>
 #include "Config/ConfigUtil.h"
 
-class RankDefineConfig
+namespace Config
 {
-public:
-    template <typename T>
-    const T GetField(std::string field_name)
+    class RankDefineConfig
     {
-        static_assert(false, "need specialization this funtion");
-        return T();
-    }
+    private:
+        int m_int_val;
+        float m_float_val;
+    public:
+        int int_val() { return m_int_val; }
+        float float_val() { return m_float_val; }
+    };
+}
 
-    template <>
-    const int GetField<int>(std::string field_name)
-    {
-        return 2;
-    }
-
-    template <>
-    const float GetField<float>(std::string field_name)
-    {
-        return 2;
-    }
-};
