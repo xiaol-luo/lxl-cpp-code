@@ -53,12 +53,50 @@ namespace Config
         {            
             if (++ curr_row <= 1)
                 continue;
-            ConfigBase cfg;
-            all_ok &= cfg.Init(kvParis, cfg_check_fun);
+            ConfigBase *cfg = new ConfigBase();
+            all_ok &= cfg->Init(kvParis, cfg_check_fun);
             if (!all_ok)
                 break;
             cfg_vec.push_back(cfg);
         }
+        if (all_ok)
+        {
+            // gen key
+            for (auto cfg : cfg_vec)
+            {
+                // key
+                {
+                    if (int_val_to_key.count(cfg->int_val) > 0)
+                    {
+                        all_ok = false;
+                        break;
+                    }
+                    int_val_to_key[cfg->int_val] = cfg;
+                }
+
+                // group
+                {
+                    auto it = float_val_to_group.find(cfg->float_val);
+                    if (float_val_to_group.end() == it)
+                    {
+                        auto ret_it = float_val_to_group.insert(std::make_pair(cfg->float_val, std::vector<ConfigBase *>()));
+                        if (!ret_it.second)
+                        {
+                            all_ok = false;
+                            break;
+                        }
+                        it = ret_it.first;
+                    }
+                    it->second.push_back(cfg);
+                }
+            }
+        }
+
+        if (nullptr != cfg_set_check_fun)
+        {
+            all_ok = all_ok && cfg_set_check_fun((void *)this);
+        }
+
         return all_ok;
     }
 }

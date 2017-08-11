@@ -4,9 +4,8 @@
 
 namespace Config
 {
-    class RankDefineConfig
+    struct RankDefineConfig
     {
-    public:
         int int_val;
         float float_val;
     };

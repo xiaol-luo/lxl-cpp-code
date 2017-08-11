@@ -6,7 +6,7 @@
 #include <exception>
 
 using ConfigCheckFunc = bool (*)(void* item);
-using ConfigSetCheckFunc = bool (*)(void* item);
+using ConfigSetCheckFunc = bool (*)(void* items);
 
 namespace Config
 {

@@ -7,9 +7,8 @@
 
 namespace Config
 {
-    class ConfigBase
+    struct ConfigBase
     {
-    public:
         int int_val = 0;
         float float_val = 0;
         std::vector<int> int_vec;
@@ -18,14 +17,15 @@ namespace Config
         std::map<int, std::vector<float>> int_float_map_vec;
         ConfigEx::ConfigExtra extra_data;
         static const ConfigBase & Default();
-    public:
         bool Init(std::map<std::string, std::string> kvPairs, ConfigCheckFunc func);
     };
 
-    class ConfigBaseSet
+    struct ConfigBaseSet
     {
-    public:
-        std::vector<ConfigBase> cfg_vec;
+        std::vector<ConfigBase *> cfg_vec;
+        std::map<int, ConfigBase *> int_val_to_key;
+        std::map<float, std::vector<ConfigBase *>> float_val_to_group;
+
         ConfigCheckFunc cfg_check_fun = nullptr;
         ConfigSetCheckFunc cfg_set_check_fun = nullptr;
         bool Load(std::string file_path);
