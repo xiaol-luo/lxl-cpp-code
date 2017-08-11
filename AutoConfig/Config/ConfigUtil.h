@@ -5,7 +5,8 @@
 #include <map>
 #include <exception>
 
-using CheckLineFunc = bool (*)(void* item);
+using ConfigCheckFunc = bool (*)(void* item);
+using ConfigSetCheckFunc = bool (*)(void* item);
 
 namespace Config
 {
@@ -14,7 +15,7 @@ namespace Config
     bool Str2BaseValue(const std::string & s, float &out_val);
     bool Str2BaseValue(const std::string & s, double &out_val);
     bool Str2BaseValue(const std::string & s, long long &out_val);
-    bool Str2BaseValue(const std::string & s, std::string &out_val);
+    bool Str2Str(const std::string & s, std::string &out_val);
     std::vector<std::string> SplitStr(const std::string s, char c);
 
     template<typename T>
@@ -59,12 +60,12 @@ namespace Config
     template<typename T>
     bool Str2VecVec(const std::string s, std::vector<std::vector<T>> &out_val)
     {
-        // a1,a2; b1,b2
+        // a1|a2; b1|b2
         bool all_ok = true;
         for (std::string vec_str : SplitStr(s, ';'))
         {
             std::vector<T> val_vec;
-            for (std::string val_str : SplitStr(vec_str, ','))
+            for (std::string val_str : SplitStr(vec_str, '|'))
             {
                 T tmp_val;
                 all_ok = all_ok && Str2BaseValue(val_str, tmp_val);
@@ -82,7 +83,7 @@ namespace Config
     template <typename K, typename V>
     bool Str2MapVec(const std::string s, std::map<K, std::vector<V>> &out_val)
     {
-        // k1:v1,v2; kk1: vv1,vv2
+        // k1:v1|v2; kk1: vv1|vv2
         bool all_ok = true;
         for (std::string vec_str : SplitStr(s, ';'))
         {
@@ -92,7 +93,7 @@ namespace Config
             K key;
             all_ok = all_ok && Str2BaseValue(kv_strs[0], key);
             std::vector<V> val_vec;
-            for (std::string val_str : SplitStr(kv_strs[1], ','))
+            for (std::string val_str : SplitStr(kv_strs[1], '|'))
             {
                 V tmp_val;
                 all_ok = all_ok && Str2BaseValue(val_str, tmp_val);
@@ -105,5 +106,5 @@ namespace Config
                 break;
         }
         return all_ok;
-    }
+    };
 }

@@ -10,7 +10,7 @@ if len(sys.argv) > 1:
 build_dir = os.path.abspath("../cmake_cache_0001")
 is_rebuild = is_rebuild or not os.path.isdir(build_dir)
 ret = True
-vstoll_cmd = "D:/Program Files/Microsoft Visual Studio 14.0/VC/vcvarsall.bat x86"
+vstoll_cmd = "D:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/vcvarsall.bat x64"
 old_dir_abs_path = os.path.abspath(os.curdir).replace('\\', '/')
 if is_rebuild:
     if  os.path.isdir(build_dir):

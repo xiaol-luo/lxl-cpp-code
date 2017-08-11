@@ -68,7 +68,7 @@ namespace Config
         }
     }
 
-    bool Str2BaseValue(const std::string & s, std::string &out_val)
+    bool Str2Str(const std::string & s, std::string &out_val)
     {
         out_val = s;
         return true;

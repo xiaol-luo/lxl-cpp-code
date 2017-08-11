@@ -10,8 +10,8 @@ namespace Config
     class ConfigBase
     {
     public:
-        int int_val;
-        float float_val;
+        int int_val = 0;
+        float float_val = 0;
         std::vector<int> int_vec;
         std::map<int, int> int_int_map;
         std::vector<std::vector<int>> int_vec_vec;
@@ -19,6 +19,15 @@ namespace Config
         ConfigEx::ConfigExtra extra_data;
         static const ConfigBase & Default();
     public:
-        bool Init(std::map<std::string, std::string> kvPairs, CheckLineFunc func);
+        bool Init(std::map<std::string, std::string> kvPairs, ConfigCheckFunc func);
+    };
+
+    class ConfigBaseSet
+    {
+    public:
+        std::vector<ConfigBase> cfg_vec;
+        ConfigCheckFunc cfg_check_fun = nullptr;
+        ConfigSetCheckFunc cfg_set_check_fun = nullptr;
+        bool Load(std::string file_path);
     };
 }
