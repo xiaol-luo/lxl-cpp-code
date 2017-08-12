@@ -3,10 +3,9 @@ cmake_minimum_required(VERSION 2.6)
 
 SET(SourceFiles 
 	main.cpp
-	Config/ConfigBase.cpp
-	Config/RankDefineConfig.cpp
 	ConfigEx/ConfigExtra.cpp
 	Config/ConfigUtil.cpp
+	auto-config/config_base.cpp
 )
 ADD_EXECUTABLE(main ${SourceFiles})
 ADD_COMPILE_OPTIONS(-g -std=c++11)
