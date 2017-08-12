@@ -18,6 +18,7 @@ namespace Config
 
     struct RankDefineSet
     {
+        ~RankDefineSet();
         ConfigCheckFunc cfg_check_fun = nullptr;
         ConfigSetCheckFunc cfg_set_check_fun = nullptr;
         bool Load(std::string file_path);

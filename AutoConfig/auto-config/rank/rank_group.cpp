@@ -20,6 +20,14 @@ namespace Config
         return all_ok;
     }
 
+    RankGroupSet::~RankGroupSet()
+    {
+        for (auto cfg : cfg_vec)
+        {
+            delete cfg;
+        }
+    }
+
     bool RankGroupSet::Load(std::string file_path)
     {
         io::CSVReader<4, io::trim_chars<' ', '\t'>, io::double_quote_escape<',', '\"'>, io::no_comment> csv_reader(file_path);

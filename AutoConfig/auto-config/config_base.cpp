@@ -27,6 +27,14 @@ namespace Config
         return all_ok;
     }
 
+    ConfigBaseSet::~ConfigBaseSet()
+    {
+        for (auto cfg : cfg_vec)
+        {
+            delete cfg;
+        }
+    }
+
     bool ConfigBaseSet::Load(std::string file_path)
     {
         io::CSVReader<7, io::trim_chars<' ', '\t'>, io::double_quote_escape<',', '\"'>, io::no_comment> csv_reader(file_path);

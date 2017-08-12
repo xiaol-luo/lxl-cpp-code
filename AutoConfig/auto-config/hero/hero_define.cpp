@@ -22,6 +22,14 @@ namespace Config
         return all_ok;
     }
 
+    HeroDefineSet::~HeroDefineSet()
+    {
+        for (auto cfg : cfg_vec)
+        {
+            delete cfg;
+        }
+    }
+
     bool HeroDefineSet::Load(std::string file_path)
     {
         io::CSVReader<5, io::trim_chars<' ', '\t'>, io::double_quote_escape<',', '\"'>, io::no_comment> csv_reader(file_path);

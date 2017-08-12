@@ -1,0 +1,8 @@
+rankId,rankGroup,name,relateParam
+int,int,string,string
+1,1,个人等级,level
+2,1,个人战力,ability
+3,1,个人财富,money
+4,2,军团等级,guildLevel
+5,2,军团战力,guildAbility
+6,2,军团财富,guildMoney
