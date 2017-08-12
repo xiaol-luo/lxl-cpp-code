@@ -12,7 +12,7 @@ bool ConfigBaseChecLine(void* cfg)
 int main(int argc, char **argv)
 {
     Config::ConfigBaseSet set;
-    set.Load("config_base.csv");
+    set.Load("csv-files/config_base.csv");
 
     Config::CsvConfigSets csv_loader;
     bool ret = csv_loader.Load("csv-files");
