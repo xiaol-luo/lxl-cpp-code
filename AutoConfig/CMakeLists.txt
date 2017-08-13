@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.6)
 
 SET(SourceFiles_3rdPartLibs
-
+	3rdPartLibs/IniFile/IniFile.cpp
 )
 
 SET(SourceFiles_OwnLibs
