@@ -1,6 +1,6 @@
-#include "Config/ConfigUtil.h"
+#include "ConfigUtil.h"
 
-namespace Config
+namespace ConfigUtil
 {
      bool Str2BaseValue(const std::string & s, bool &out_val)
     {

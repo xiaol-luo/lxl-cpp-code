@@ -2,27 +2,28 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "Config/ConfigUtil.h"
+#include "Utils/ConfigUtil.h"
 
 namespace Config
 {
-    struct RankGroup // 
+    struct HeroDefine // 
     {
-        int rankId = 0 ;
-        int rankGroup = 0 ;
+        int prof = 0 ;
         std::string name;
-        std::string relateParam;
+        int hp = 0 ;
+        int gongji = 0 ;
+        int moveSpeed = 0 ;
 
         bool Init(std::map<std::string, std::string> kvPairs, ConfigCheckFunc func);
     };
 
-    struct RankGroupSet
+    struct HeroDefineSet
     {
-        ~RankGroupSet();
+        ~HeroDefineSet();
         ConfigCheckFunc cfg_check_fun = nullptr;
         ConfigSetCheckFunc cfg_set_check_fun = nullptr;
         bool Load(std::string file_path);
         
-        std::vector<RankGroup *> cfg_vec;
+        std::vector<HeroDefine *> cfg_vec;
     };
 }

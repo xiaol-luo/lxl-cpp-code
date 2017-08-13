@@ -1,8 +1,8 @@
 #include "csv_config_sets.h"
-#include "auto-config/rank/rank_define.h"
-#include "auto-config/rank/rank_group.h"
-#include "auto-config/hero/hero_define.h"
-#include "auto-config/config_base.h"
+#include "rank/rank_define.h"
+#include "rank/rank_group.h"
+#include "hero/hero_define.h"
+#include "config_base/config_base.h"
 
 namespace Config
 {
@@ -42,7 +42,7 @@ namespace Config
         }
         if (all_ok)
         {
-            all_ok = csv_ConfigBaseSet->Load(root_path + '/' + "config_base.csv");
+            all_ok = csv_ConfigBaseSet->Load(root_path + '/' + "config_base/config_base.csv");
         }
 
         if (!all_ok)

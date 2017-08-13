@@ -1,4 +1,4 @@
-#include "auto-config/rank/rank_group.h"
+#include "rank/rank_define.h"
 #include "CsvParser/csv.h"
 
 namespace Config
@@ -8,19 +8,19 @@ namespace Config
      static const char * Field_Name_name = "name";
      static const char * Field_Name_relateParam = "relateParam";
 
-    bool RankGroup::Init(std::map<std::string, std::string> kvPairs, ConfigCheckFunc func)
+    bool RankDefine::Init(std::map<std::string, std::string> kvPairs, ConfigCheckFunc func)
     {
         bool all_ok = true;
-        all_ok = all_ok && kvPairs.count(Field_Name_rankId) > 0 && Str2BaseValue (kvPairs[Field_Name_rankId], rankId);
-        all_ok = all_ok && kvPairs.count(Field_Name_rankGroup) > 0 && Str2BaseValue (kvPairs[Field_Name_rankGroup], rankGroup);
-        all_ok = all_ok && kvPairs.count(Field_Name_name) > 0 && Str2Str (kvPairs[Field_Name_name], name);
-        all_ok = all_ok && kvPairs.count(Field_Name_relateParam) > 0 && Str2Str (kvPairs[Field_Name_relateParam], relateParam);
+        all_ok = all_ok && kvPairs.count(Field_Name_rankId) > 0 && ConfigUtil::Str2BaseValue (kvPairs[Field_Name_rankId], rankId);
+        all_ok = all_ok && kvPairs.count(Field_Name_rankGroup) > 0 && ConfigUtil::Str2BaseValue (kvPairs[Field_Name_rankGroup], rankGroup);
+        all_ok = all_ok && kvPairs.count(Field_Name_name) > 0 && ConfigUtil::Str2Str (kvPairs[Field_Name_name], name);
+        all_ok = all_ok && kvPairs.count(Field_Name_relateParam) > 0 && ConfigUtil::Str2Str (kvPairs[Field_Name_relateParam], relateParam);
         if (all_ok && nullptr != func)
             all_ok &= func(this);
         return all_ok;
     }
 
-    RankGroupSet::~RankGroupSet()
+    RankDefineSet::~RankDefineSet()
     {
         for (auto cfg : cfg_vec)
         {
@@ -28,7 +28,7 @@ namespace Config
         }
     }
 
-    bool RankGroupSet::Load(std::string file_path)
+    bool RankDefineSet::Load(std::string file_path)
     {
         io::CSVReader<4, io::trim_chars<' ', '\t'>, io::double_quote_escape<',', '\"'>, io::no_comment> csv_reader(file_path);
         csv_reader.read_header(io::ignore_extra_column,
@@ -55,7 +55,7 @@ namespace Config
         {            
             if (++ curr_row <= 1)
                 continue;
-            RankGroup *cfg = new RankGroup();
+            RankDefine *cfg = new RankDefine();
             all_ok &= cfg->Init(kvParis, cfg_check_fun);
             if (!all_ok)
                 break;

@@ -1,4 +1,4 @@
-#include "auto-config/hero/hero_define.h"
+#include "hero/hero_define.h"
 #include "CsvParser/csv.h"
 
 namespace Config
@@ -12,11 +12,11 @@ namespace Config
     bool HeroDefine::Init(std::map<std::string, std::string> kvPairs, ConfigCheckFunc func)
     {
         bool all_ok = true;
-        all_ok = all_ok && kvPairs.count(Field_Name_prof) > 0 && Str2BaseValue (kvPairs[Field_Name_prof], prof);
-        all_ok = all_ok && kvPairs.count(Field_Name_name) > 0 && Str2Str (kvPairs[Field_Name_name], name);
-        all_ok = all_ok && kvPairs.count(Field_Name_hp) > 0 && Str2BaseValue (kvPairs[Field_Name_hp], hp);
-        all_ok = all_ok && kvPairs.count(Field_Name_gongji) > 0 && Str2BaseValue (kvPairs[Field_Name_gongji], gongji);
-        all_ok = all_ok && kvPairs.count(Field_Name_moveSpeed) > 0 && Str2BaseValue (kvPairs[Field_Name_moveSpeed], moveSpeed);
+        all_ok = all_ok && kvPairs.count(Field_Name_prof) > 0 && ConfigUtil::Str2BaseValue (kvPairs[Field_Name_prof], prof);
+        all_ok = all_ok && kvPairs.count(Field_Name_name) > 0 && ConfigUtil::Str2Str (kvPairs[Field_Name_name], name);
+        all_ok = all_ok && kvPairs.count(Field_Name_hp) > 0 && ConfigUtil::Str2BaseValue (kvPairs[Field_Name_hp], hp);
+        all_ok = all_ok && kvPairs.count(Field_Name_gongji) > 0 && ConfigUtil::Str2BaseValue (kvPairs[Field_Name_gongji], gongji);
+        all_ok = all_ok && kvPairs.count(Field_Name_moveSpeed) > 0 && ConfigUtil::Str2BaseValue (kvPairs[Field_Name_moveSpeed], moveSpeed);
         if (all_ok && nullptr != func)
             all_ok &= func(this);
         return all_ok;

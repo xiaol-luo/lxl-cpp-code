@@ -1,4 +1,4 @@
-#include "auto-config/config_base.h"
+#include "config_base/config_base.h"
 #include "CsvParser/csv.h"
 
 namespace Config
@@ -14,13 +14,13 @@ namespace Config
     bool ConfigBase::Init(std::map<std::string, std::string> kvPairs, ConfigCheckFunc func)
     {
         bool all_ok = true;
-        all_ok = all_ok && kvPairs.count(Field_Name_int_val) > 0 && Str2BaseValue (kvPairs[Field_Name_int_val], int_val);
-        all_ok = all_ok && kvPairs.count(Field_Name_float_val) > 0 && Str2BaseValue (kvPairs[Field_Name_float_val], float_val);
-        all_ok = all_ok && kvPairs.count(Field_Name_int_vec) > 0 && Str2Vec (kvPairs[Field_Name_int_vec], int_vec);
-        all_ok = all_ok && kvPairs.count(Field_Name_int_int_map) > 0 && Str2Map (kvPairs[Field_Name_int_int_map], int_int_map);
-        all_ok = all_ok && kvPairs.count(Field_Name_int_vec_vec) > 0 && Str2VecVec (kvPairs[Field_Name_int_vec_vec], int_vec_vec);
-        all_ok = all_ok && kvPairs.count(Field_Name_int_float_map_vec) > 0 && Str2MapVec (kvPairs[Field_Name_int_float_map_vec], int_float_map_vec);
-        all_ok = all_ok && kvPairs.count(Field_Name_str_val) > 0 && Str2Str (kvPairs[Field_Name_str_val], str_val);
+        all_ok = all_ok && kvPairs.count(Field_Name_int_val) > 0 && ConfigUtil::Str2BaseValue (kvPairs[Field_Name_int_val], int_val);
+        all_ok = all_ok && kvPairs.count(Field_Name_float_val) > 0 && ConfigUtil::Str2BaseValue (kvPairs[Field_Name_float_val], float_val);
+        all_ok = all_ok && kvPairs.count(Field_Name_int_vec) > 0 && ConfigUtil::Str2Vec (kvPairs[Field_Name_int_vec], int_vec);
+        all_ok = all_ok && kvPairs.count(Field_Name_int_int_map) > 0 && ConfigUtil::Str2Map (kvPairs[Field_Name_int_int_map], int_int_map);
+        all_ok = all_ok && kvPairs.count(Field_Name_int_vec_vec) > 0 && ConfigUtil::Str2VecVec (kvPairs[Field_Name_int_vec_vec], int_vec_vec);
+        all_ok = all_ok && kvPairs.count(Field_Name_int_float_map_vec) > 0 && ConfigUtil::Str2MapVec (kvPairs[Field_Name_int_float_map_vec], int_float_map_vec);
+        all_ok = all_ok && kvPairs.count(Field_Name_str_val) > 0 && ConfigUtil::Str2Str (kvPairs[Field_Name_str_val], str_val);
         all_ok = all_ok && extra_data.Init(*this);
         if (all_ok && nullptr != func)
             all_ok &= func(this);

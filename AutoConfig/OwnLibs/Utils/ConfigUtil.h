@@ -8,7 +8,7 @@
 using ConfigCheckFunc = bool (*)(void* item);
 using ConfigSetCheckFunc = bool (*)(void* items);
 
-namespace Config
+namespace ConfigUtil
 {
     bool Str2BaseValue(const std::string & s, bool &out_val);
     bool Str2BaseValue(const std::string & s, int &out_val);
